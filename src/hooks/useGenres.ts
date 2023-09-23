@@ -1,38 +1,36 @@
-import { CanceledError } from "axios";
-import { useState, useEffect } from "react";
-import apiClient from "../services/api-client";
+import useData from "./useData";
 
-interface Genre {
+export interface Genre {
   id: number;
   name: string;
 }
-interface FetchGenresResponse {
-  count: number;
-  results: Genre[];
-}
 
-const useGenres = () => {
-  const [genres, setGenres] = useState<Genre[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setLoading] = useState(false);
+const useGenres = () => useData<Genre>("/genres");
 
-  useEffect(() => {
-    const controller = new AbortController();
-    setLoading(true);
-    apiClient
-      .get<FetchGenresResponse>("/genres", { signal: controller.signal })
-      .then((res) => {
-        setGenres(res.data.results);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setLoading(false);
-      });
-    return () => controller.abort();
-  }, []);
+// since below code is definde in a generic way in the useData hook, we do not need it anymore.
 
-  return { genres, error, isLoading };
-};
+// {
+//   const [genres, setGenres] = useState<Genre[]>([]);
+//   const [error, setError] = useState("");
+//   const [isLoading, setLoading] = useState(false);
+
+//   useEffect(() => {
+//     const controller = new AbortController();
+//     setLoading(true);
+//     apiClient
+//       .get<FetchGenresResponse>("/genres", { signal: controller.signal })
+//       .then((res) => {
+//         setGenres(res.data.results);
+//         setLoading(false);
+//       })
+//       .catch((err) => {
+//         if (err instanceof CanceledError) return;
+//         setError(err.message);
+//         setLoading(false);
+//       });
+//     return () => controller.abort();
+//   }, []);
+
+//   return { genres, error, isLoading };
+// };
 export default useGenres;
