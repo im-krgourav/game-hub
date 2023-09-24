@@ -1,4 +1,4 @@
-import useData from "./useData";
+import geners from "../data/geners";
 
 export interface Genre {
   id: number;
@@ -6,7 +6,8 @@ export interface Genre {
   image_background: string;
 }
 
-const useGenres = () => useData<Genre>("/genres");
+// const useGenres = () => useData<Genre>("/genres");
+const useGenres = () => ({ data: geners, isLoading: false, error: null });
 
 // since below code is definde in a generic way in the useData hook, we do not need it anymore.
 
