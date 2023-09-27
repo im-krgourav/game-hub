@@ -1,6 +1,6 @@
 import geners from "../data/geners";
 import { useQuery } from "@tanstack/react-query";
-import APIClient, { FetchResponse } from "../services/api-client";
+import APIClient from "../services/api-client";
 
 const apiClient = new APIClient<Genre>("/genres");
 
@@ -16,7 +16,7 @@ const useGenres = () =>
     queryKey: ["genres"],
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, //24hrs
-    initialData: { count: geners.length, results: geners },
+    initialData: geners,
   });
 
 // since below code is definde in a generic way in the useData hook, we do not need it anymore.
