@@ -17,11 +17,11 @@ const Homepage = () => {
         lg: "200px 1fr",
       }}
     >
-      <Show above="sm">
-        <GridItem area="aside" paddingX={5}>
-          <GenreList />
-        </GridItem>
-      </Show>
+      {/* <Show above="sm"> */}
+      <GridItem area="aside" paddingX={5}>
+        <GenreList />
+      </GridItem>
+      {/* </Show> */}
       <GridItem area="main">
         <Box paddingLeft={2}>
           <GameHeading />
