@@ -9,15 +9,15 @@ const Homepage = () => {
   return (
     <Grid
       templateAreas={{
-        base: `"asied main"`,
+        base: `"aside main"`,
         lg: `"aside main"`,
       }}
       templateColumns={{
-        base: "200px 1fr",
+        base: "1fr",
         lg: "200px 1fr",
       }}
     >
-      <Show above="lg">
+      <Show above="sm">
         <GridItem area="aside" paddingX={5}>
           <GenreList />
         </GridItem>
