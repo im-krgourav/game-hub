@@ -6,9 +6,10 @@ import useGameQueryStore from "../store";
 
 const PlatformSelector = () => {
   const { data, error } = usePlatforms();
+  const setSelectedPlatformId = useGameQueryStore((s) => s.setPlatformID);
   const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformID);
   const selectedPlatform = usePlatform(selectedPlatformId);
-  const setSelectedPlatformId = useGameQueryStore((s) => s.setPlatformId);
+
   if (error) return null;
   return (
     <Menu>

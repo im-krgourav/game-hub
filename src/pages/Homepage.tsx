@@ -4,36 +4,56 @@ import GenreList from "../components/GenreList";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
 import GameHeading from "../components/heading";
+import GenreSelector from "../components/GenreSelector";
 
 const Homepage = () => {
   return (
     <Grid
       templateAreas={{
-        base: `"aside main"`,
+        base: `"main"`,
         lg: `"aside main"`,
       }}
       templateColumns={{
-        base: "200px 1fr",
+        base: "1fr",
         lg: "200px 1fr",
       }}
     >
-      {/* <Show above="sm"> */}
-      <GridItem area="aside" paddingX={5}>
-        <GenreList />
-      </GridItem>
-      {/* </Show> */}
-      <GridItem area="main">
-        <Box paddingLeft={2}>
-          <GameHeading />
-          <Flex marginBottom={5}>
-            <Box marginRight={5}>
-              <PlatformSelector />
-            </Box>
-            <SortSelector />
-          </Flex>
-        </Box>
-        <GameGrid />
-      </GridItem>
+      <Show>
+        <GridItem area="aside" paddingX={5}>
+          <GenreList />
+        </GridItem>
+      </Show>
+      <Show below="lg">
+        <GridItem area="main">
+          <Box paddingLeft={2}>
+            <GameHeading />
+            <Flex marginBottom={5}>
+              <Box marginRight={5}>
+                <PlatformSelector />
+              </Box>
+              <Box marginRight={5}>
+                <GenreSelector />
+              </Box>
+              <SortSelector />
+            </Flex>
+          </Box>
+          <GameGrid />
+        </GridItem>
+      </Show>
+      <Show above="lg">
+        <GridItem area="main">
+          <Box paddingLeft={2}>
+            <GameHeading />
+            <Flex marginBottom={5}>
+              <Box marginRight={5}>
+                <PlatformSelector />
+              </Box>
+              <SortSelector />
+            </Flex>
+          </Box>
+          <GameGrid />
+        </GridItem>
+      </Show>
     </Grid>
   );
 };
