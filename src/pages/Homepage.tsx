@@ -34,6 +34,8 @@ const Homepage = () => {
               <Box marginRight={5}>
                 <GenreSelector />
               </Box>
+            </Flex>
+            <Flex marginBottom={5}>
               <SortSelector />
             </Flex>
           </Box>
