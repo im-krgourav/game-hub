@@ -31,12 +31,14 @@ const Homepage = () => {
               <Box marginRight={5}>
                 <PlatformSelector />
               </Box>
-              <Box marginRight={5}>
+              <Box>
                 <GenreSelector />
               </Box>
             </Flex>
             <Flex marginBottom={5}>
-              <SortSelector />
+              <Box marginRight={5}>
+                <SortSelector />
+              </Box>
             </Flex>
           </Box>
           <GameGrid />
